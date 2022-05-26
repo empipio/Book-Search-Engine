@@ -20,6 +20,15 @@ type Book {
     // is image a string????
 }
 
+input BookInput {
+    authors: [String]
+    description: String
+    bookId: String
+    image: String
+    title: String
+    link: String
+}
+
 type Auth {
     token: String
     user: [User]
@@ -32,9 +41,8 @@ type Query {
 type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    saveBook(bookId: String!, authors: [String!], description: String, title: String!, image: String, link: String): User
-    // does this really accept user type? Not book?
-    // look into input type for all of this ^
+    saveBook(bookData: BookInput): User
+    // is this correct for input type? ^
     removeBook(bookId: String!): User
 }
 
