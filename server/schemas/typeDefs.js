@@ -3,7 +3,7 @@ const { gql } = require("apollo-server-express");
 const typeDefs = gql`
 type User {
     // check whether need ! and that email is correct
-    _id: ID
+    _id: ID!
     username: String
     email: String
     bookCount: Int
@@ -11,13 +11,12 @@ type User {
 }
 
 type Book {
-    bookId: String
+    bookId: String!
     authors: [String]
     description: String
     title: String
     image: String
     link: String
-    // is image a string????
 }
 
 input BookInput {
@@ -30,20 +29,21 @@ input BookInput {
 }
 
 type Auth {
-    token: String
-    user: [User]
+    token: ID!
+    user: User
 }
 
 type Query {
-    me: [User]
+    me: User
 }
 
 type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
+    // is ! definitely required on BookInput
     saveBook(bookData: BookInput): User
     // is this correct for input type? ^
-    removeBook(bookId: String!): User
+    removeBook(bookId: ID!): User
 }
 
 
