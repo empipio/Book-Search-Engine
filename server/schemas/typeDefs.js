@@ -1,51 +1,46 @@
 const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
-type User {
-    // check whether need ! and that email is correct
+  type User {
     _id: ID!
     username: String
     email: String
     bookCount: Int
     savedBooks: [Book]
-}
+  }
 
-type Book {
+  type Book {
     bookId: String!
     authors: [String]
     description: String
     title: String
     image: String
     link: String
-}
+  }
 
-input BookInput {
+  input BookInput {
     authors: [String]
     description: String
     bookId: String
     image: String
     title: String
     link: String
-}
+  }
 
-type Auth {
+  type Auth {
     token: ID!
     user: User
-}
+  }
 
-type Query {
+  type Query {
     me: User
-}
+  }
 
-type Mutation {
+  type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    // is ! definitely required on BookInput
     saveBook(bookData: BookInput): User
-    // is this correct for input type? ^
     removeBook(bookId: ID!): User
-}
-
-
+  }
 `;
 module.exports = typeDefs;

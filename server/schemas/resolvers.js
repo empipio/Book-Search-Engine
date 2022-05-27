@@ -4,13 +4,13 @@ const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
+    //finds user that is logged in
     me: async (parent, args, context) => {
       if (context.user) {
         return User.findOne(
           { _id: context.user._id } || { username: context.user.username }
         ).populate("savedBooks");
       }
-      //   think this will only find the user that is logged in...
       throw new AuthenticationError("You need to be logged in!");
     },
   },
