@@ -2,7 +2,7 @@
 
 For this project, a fully functioning Google Books API search engine built with a RESTful API has been refactored to a GraphQL API built with Apollo Server. An apollo server was set up to use GraphQL queries and mutations to fetch and modify data, replacing the existing RESTful API. The existing authentication middleware was modified so that it works in the context of a GraphQL API. An Apollo Provider was created so that requests can communicate with an apollo server. The application has been deployed to Heroku with a MongoDB database using MongoDB Atlas.
 
-![screenshot of user, showing books saved by the user]()
+![screenshot of user, showing books saved by the user](/client/src/assets/screenshot.png)
 
 The acceptance criteria were as follows:
 
@@ -51,4 +51,4 @@ WHEN I click on the Logout button
 THEN I am logged out of the site and presented with a menu with the options Search for Books and Login/Signup and an input field to search for books and a submit button
 ```
 
-The deployed application is available here:
+The deployed application is available here: https://quiet-retreat-73518.herokuapp.com/
